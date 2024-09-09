@@ -110,6 +110,7 @@ Para facilitar o setup do projeto, você pode rodar tanto a API quanto o banco d
     ```
 Você verá uma interface amigável onde poderá testar os endpoints e visualizar detalhes como parâmetros, respostas e exemplos de uso.
 
+
 ## Testes Unitários
     Este projeto inclui testes unitários para garantir a qualidade do código.
 
@@ -123,5 +124,4 @@ Você verá uma interface amigável onde poderá testar os endpoints e visualiza
     ```
     npm run test:cov
     ```
-
-* Esses comandos irão executar os testes definidos e mostrar a cobertura de código.
+ Esses comandos irão executar os testes definidos e mostrar a cobertura de código.
