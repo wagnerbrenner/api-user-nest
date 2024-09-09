@@ -1,4 +1,4 @@
-import { compare } from 'bcrypt';
+import { compare } from 'bcryptjs';
 
 export const validatePassword = async (
   password: string,

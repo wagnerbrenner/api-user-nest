@@ -1,83 +1,127 @@
 # API de Usuários
 
-Este projeto é uma API de usuários desenvolvida em Node.js utilizando o framework Nest.js. A API permite realizar operações CRUD (Create, Read, Update, Delete) em um banco de dados Postgres.
+Este projeto é uma API de usuários desenvolvida em **Node.js** utilizando o framework **Nest.js**. A API permite realizar operações **CRUD** (Create, Read, Update, Delete) em um banco de dados **Postgres**.
 
-## Comandos
+## Opções de Execução
 
-Para executar este projeto, siga os passos abaixo:
+### 1. Rodar com Docker (Recomendado)
+
+Para facilitar o setup do projeto, você pode rodar tanto a API quanto o banco de dados em contêineres Docker.
+
+#### Passos:
 
 1. Clone o repositório para o seu ambiente local:
 
-```
-git clone https://github.com/seu-usuario/seu-projeto.git
-```
+   ```
+   git clone https://github.com/wagnerbrenner/api-user-nest
+   ```
 
 2. Navegue até o diretório do projeto:
 
-```
-cd seu-projeto
-```
+    ```
+    cd seu-projeto
+    ```
 
+3. Execute o comando abaixo para iniciar a aplicação e o banco de dados Postgres em contêineres Docker:
+
+    ```
+    docker-compose up --build
+    ```
+    Esse comando irá:
+
+    *   Subir o contêiner da API na porta 8080.
+    *   Subir o contêiner do banco de dados Postgres na porta 5432.
+
+4. Acesse a API e a documentação Swagger em:
+
+    ```
+    http://localhost:8080/api
+    ```
+
+*Para parar os contêineres, use:
+    ```
+    docker-compose down
+    ```
+
+### 2. Rodar Localmente (Sem Docker)
+
+    Se preferir rodar a aplicação localmente sem Docker, siga os passos abaixo:
+
+#### Passos:
+1. Clone o repositório para o seu ambiente local:
+
+    ```
+    git clone https://github.com/wagnerbrenner/api-user-nest
+    ```
+2. Navegue até o diretório do projeto:
+
+    ```
+    cd seu-projeto
+    ```
 3. Instale as dependências:
 
-```
-npm install
-```
+    ```
+    npm install
+    ```
 
-4. Execute o projeto:
+4. Configure o banco de dados:
 
-```
-npm run start:dev
-```
+* Crie um arquivo chamado .env.development.local na raiz do projeto e adicione as seguintes variáveis de ambiente:
+
+    ```
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_USER=postgres
+    DB_PASSWORD=mysecretpassword
+    DB_DATABASE=api-user
+    ```
+5. Suba o banco de dados Postgres localmente (caso não esteja usando Docker) ou conecte-se a um banco Postgres já existente.
+
+6. Execute o projeto:
+    ```
+    npm run start:dev
+    ```
+7. Acesse a API e a documentação Swagger em:
+    ```
+    http://localhost:8080/api
+    ```
 
 ## Banco de Dados
+    Este projeto utiliza PostgreSQL como banco de dados para armazenar as informações dos usuários. Certifique-se de configurar corretamente as variáveis de ambiente no arquivo .env.development.local para conectar ao banco de dados.
 
-Este projeto utiliza um banco de dados Postgres para armazenar as informações dos usuários. O tipo de banco de dados utilizado pode variar de acordo com a configuração do projeto.
+### Exemplo de configuração .env.development.local:
+    ```
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_USER=postgres
+    DB_PASSWORD=mysecretpassword
+    DB_DATABASE=api-user
+    ```
 
-Para configurar o banco de dados, siga os passos abaixo:
 
-1. Crie um arquivo chamado `.env.development.local` na raiz do projeto.
+## Documentação da API (Swagger)
+    Este projeto utiliza o Swagger para documentar os endpoints da API.
 
-2. Dentro do arquivo `.env.development.local`, adicione as seguintes variáveis de ambiente:
+### Acesso à documentação:
+    Após iniciar a aplicação (seja via Docker ou localmente), abra o navegador e acesse:
 
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=seu-usuario
-DB_PASSWORD=sua-senha
-DB_DATABASE=nome-do-banco
-```
-
-Certifique-se de substituir `seu-usuario`, `sua-senha` e `nome-do-banco` pelas informações corretas do seu banco de dados.
-
-3. Salve o arquivo `.env.development.local`.
-
-Agora o projeto está configurado para utilizar o banco de dados Postgres.
-
-## Swagger
-
-Este projeto utiliza o Swagger para documentar a API. Para acessar a documentação, siga os passos abaixo:
-
-1. Após executar o projeto, abra o seu navegador e acesse o seguinte endereço:
-
-```
-http://localhost:8080/api
-```
-
-2. A documentação da API será exibida, contendo informações sobre os endpoints disponíveis, parâmetros, respostas e exemplos de requisições.
+    ```
+        http://localhost:8080/api
+    ```
+Você verá uma interface amigável onde poderá testar os endpoints e visualizar detalhes como parâmetros, respostas e exemplos de uso.
 
 ## Testes Unitários
+    Este projeto inclui testes unitários para garantir a qualidade do código.
 
-Este projeto possui uma camada de testes unitários para garantir a qualidade do código. Para executar os testes unitários e obter a cobertura de código, utilize o seguinte comando:
+### Para executar os testes e monitorar alterações:
 
-```
-npm run test:cov
-```
+    ```
+    npm run test:watch
+    ```
 
-Isso irá executar os testes e ficar monitorando os arquivos do projeto em busca de alterações. Sempre que um arquivo for modificado, os testes serão executados automaticamente.
+### Para executar os testes e obter a cobertura de código:
+    ```
+    npm run test:cov
+    ```
 
-Certifique-se de ter todas as dependências instaladas antes de executar os comandos acima.- Para executar os testes unitários e obter a cobertura de código, utilize o seguinte comando:
-
-```
-npm run test:watch
-```
+* Esses comandos irão executar os testes definidos e mostrar a cobertura de código.
